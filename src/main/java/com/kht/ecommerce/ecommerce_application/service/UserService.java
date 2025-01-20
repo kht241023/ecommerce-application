@@ -3,6 +3,7 @@ package com.kht.ecommerce.ecommerce_application.service;
 import com.kht.ecommerce.ecommerce_application.dto.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
     List<User> getAllUsers();
@@ -11,5 +12,6 @@ public interface UserService {
     void insertUser(User user);
 
     // 이메일 존재 유무 확인
-    int existByEmail(String email);
+   // Map<String, Object> existByEmail(String email);
+    boolean existByEmail(String email);
 }

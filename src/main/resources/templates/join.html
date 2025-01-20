@@ -45,6 +45,23 @@
 <script>
     $("#joinForm").submit(function(event) {
         event.preventDefault();
+        //  이메일 중복확인 /api/existEmail
+    $.ajax({
+        url: "/api/existEmail",
+        method: "GET",
+        success: function(data) {
+            if(data) {
+                alert("이미 사용중인 이메일입니다."); // count >0 이상이면 존재
+                return;
+            } else{
+                alert("사용 가능한 이메일입니다.");
+            }
+        },
+        error: function(data) {
+            alert("데이터베이스 연결할 수 없습니다.");
+        }
+    })
+
         $.ajax({
             url: "/api/join",
             method: "POST",

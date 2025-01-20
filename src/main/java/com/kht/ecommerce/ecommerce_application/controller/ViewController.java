@@ -36,4 +36,18 @@ public class ViewController {
     public String joinPage() {
         return "join";
     }
+
+    @GetMapping("/products/insert")
+    public String  getProduct() {
+        return "insertProduct";
+    }
 }
+
+
+
+
+
+
+
+
+
