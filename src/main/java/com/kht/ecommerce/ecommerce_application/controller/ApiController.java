@@ -41,6 +41,7 @@ public class ApiController {
     // http://localhost:8080/api/carts?userId=1
     @GetMapping("/api/carts")
     public List<Cart> getCart(@RequestParam("userId") int userId) {
+
         return cartService.getCartByUserId(userId);
     }
     /*
@@ -81,5 +82,11 @@ public class ApiController {
     public void addProduct(@RequestBody Product product) {
         log.info("add product: {}", product);
         productService.addProduct();
+    }
+
+    @GetMapping("/api/product/{id}")
+    public Product getProduct(@PathVariable("id") int id) {
+        return productService.findById(id);
+        // DB에서 가져온 데이터를 front-end 전달
     }
 }
