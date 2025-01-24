@@ -6,6 +6,17 @@
         INSERT into  users (email, username, password, firstname, lastname, phone, city, street,street_number, zipcode)
          VALUES (#{email}, #{username}, #{password}, #{firstname}, #{lastname}, #{phone}, #{city}, #{street}, #{streetNumber}, #{zipcode})
     </insert>
+
+    <update id="editUser">
+        update users
+        set email = #{email},
+            phone = #{phone},
+            city = #{city},
+            street = #{street},
+            street_number = #{streetNumber},
+            zipcode = #{zipcode}
+        where id = #{id}
+    </update>
     <select id="getByUserId">
         SELECT *
         FROM USERS

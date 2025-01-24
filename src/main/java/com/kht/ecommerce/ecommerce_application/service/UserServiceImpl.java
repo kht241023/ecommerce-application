@@ -53,4 +53,9 @@ public class UserServiceImpl implements UserService {
     */
         return userMapper.existByEmail(email) > 0 ;
     }
+
+    @Override
+    public int editUser(User user) {
+        return userMapper.editUser(user);
+    }
 }
