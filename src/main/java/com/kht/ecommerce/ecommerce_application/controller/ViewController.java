@@ -21,7 +21,7 @@ public class ViewController {
     }
 
     // 상품 상세 페이지
-    @GetMapping("/product/")
+    @GetMapping("/product")
     public String productPage(@RequestParam("id") int id) {
 
         return "product_detail";
@@ -55,8 +55,9 @@ public class ViewController {
         return "inputEmail";
     }
 
-    @GetMapping("/update/product/{id}")
-    public String  updateProduct() {
+    // 수정하기  RequestParam 은 url 작성 X
+    @GetMapping("/update/product")
+    public String  updateProduct(@RequestParam("id") int id) {
         return "updateProduct";
     }
 }

@@ -23,10 +23,14 @@
                 if(data) {
                     $("#productDetail").html(`
                                             <h1>${data.id}</h1>
-                                            <img src="${data.imagePath}">
+                                            <img src="${data.image}" style="width: 200px; height: 200px;">
                                             <p>${data.title}</p>
-                                            <p>${data.author}</p>
-                                            <p>${data.genre}</p>
+                                            <p>${data.price}</p>
+                                            <p>${data.description}</p>
+                                            <p>${data.category}</p>
+                                            <p>${data.ratingRate}</p>
+                                            <p>${data.ratingCount}</p>
+                                            <a href="/update/product?id=${data.id}">수정하기</a>
                                             `);
                 } else {
                     $("#productDetail").html("<p>존재하는 데이터가 없습니다.</p>");
