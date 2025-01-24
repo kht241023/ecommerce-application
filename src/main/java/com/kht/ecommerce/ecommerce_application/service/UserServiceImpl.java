@@ -33,6 +33,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getByUserId(int id) {
+        return userMapper.getByUserId(id);
+    }
+
+    @Override
     public boolean existByEmail(String email) {
     /*
         앞으로 아래와 같은 기능은 서비스 Impl에서 작성할 것!!!!!

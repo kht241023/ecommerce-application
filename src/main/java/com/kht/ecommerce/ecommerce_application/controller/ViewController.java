@@ -14,6 +14,11 @@ public class ViewController {
         return "index";
     }
 
+    @GetMapping("/user")
+    public String userPage(@RequestParam("id") int id) {
+        return "user_detail";
+    }
+
     // 상품 목록 페이지
     @GetMapping("/products")
     public String productsPage() {

@@ -8,6 +8,7 @@ import com.kht.ecommerce.ecommerce_application.service.ProductServiceImpl;
 import com.kht.ecommerce.ecommerce_application.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -30,6 +31,13 @@ public class ApiController {
     public List<User> getUsers() {
         return userService.getAllUsers();
     }
+
+    @GetMapping("/api/user/{id}")
+    public User getUser(@PathVariable int id) {
+        return userService.getByUserId(id);
+    }
+
+
 
     // 상품 목록 API
     @GetMapping("/api/products")
