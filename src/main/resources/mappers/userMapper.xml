@@ -9,6 +9,7 @@
     <select id="getByUserId">
         SELECT *
         FROM USERS
+        WHERE id= #{id}
     </select>
     <select id="existByEmail">
         SELECT COUNT(*)

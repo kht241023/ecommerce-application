@@ -34,7 +34,9 @@ public class ApiController {
 
     @GetMapping("/api/user/{id}")
     public User getUser(@PathVariable int id) {
-        return userService.getByUserId(id);
+       User user =   userService.getByUserId(id);
+       log.info(user.toString());
+        return user;
     }
 
 

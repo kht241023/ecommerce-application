@@ -14,9 +14,16 @@ public class ViewController {
         return "index";
     }
 
+    // 유저 정보 조회 페이지
     @GetMapping("/user")
     public String userPage(@RequestParam("id") int id) {
         return "user_detail";
+    }
+
+    // 유저 정보 수정 페이지 조회 user-edit.html
+    @GetMapping("/user/edit")
+    public String userEditPage(@RequestParam("id") int id) {
+        return "user_edit";
     }
 
     // 상품 목록 페이지
