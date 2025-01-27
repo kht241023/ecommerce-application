@@ -12,4 +12,14 @@
         FROM KHTBOOK
         WHERE id=#{id}
     </select>
+
+
+    <update id="updateById">
+        UPDATE KHTBOOK
+        SET author     = #{ author},
+            title      = #{title},
+            genre      = #{genre},
+            image_path = #{imagePath}
+        WHERE id = #{id}
+    </update>
 </mapper>

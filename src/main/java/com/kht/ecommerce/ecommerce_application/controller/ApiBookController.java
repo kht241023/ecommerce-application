@@ -4,10 +4,7 @@ package com.kht.ecommerce.ecommerce_application.controller;
 import com.kht.ecommerce.ecommerce_application.dto.KHTBook;
 import com.kht.ecommerce.ecommerce_application.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,4 +29,10 @@ public class ApiBookController {
         return bookService.findById(id);
     }
 // /books/{id}/update  POST 요청을 받아 특정 책 정보를 수정
+
+    @PutMapping("/books/{id}/update")
+    public int update(@PathVariable int id, @RequestBody KHTBook book) {
+        return  bookService.updateById(book);
+        //return 책 정보 수정 서비스 연결;
+    }
 }

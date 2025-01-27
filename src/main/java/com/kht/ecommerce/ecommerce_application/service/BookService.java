@@ -17,4 +17,6 @@ public interface BookService {
     List<KHTBook> findAll();
 
     KHTBook findById(int id);
+
+    int updateById(KHTBook khtBook);
 }

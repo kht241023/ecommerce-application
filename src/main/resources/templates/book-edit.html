@@ -47,16 +47,26 @@
     $("#edit-form").submit(function (e) {
         e.preventDefault();
         $.ajax({
-            url: ` / books / $
-                {
-                    bookId
+            url: `/api/books/${bookId}/update`,  //  bookId = ? 가 아니므로, 주소값에서 / 사이에 작성할 수 있음
+            method: "PUT", // post로 데이터가 수정이 되긴 하지만 restFul 개념에 어긋나기 때문에 put 수정
+            contentType: "application/json",
+            data: JSON.stringify({
+                title: $("#title").val(),// input 에 수정 작성된 값 가져오기
+                author: $("#author").val(),
+                genre: $("#genre").val(),
+                imagePath: $("#imagePath").val(),
+            }),
+            success:
+                function () {
+                    alert("정보가 수정되었습니다.");
+                    // 책목록으로 이동  상세보기로 이동 설정
+                },
+            error:
+                function () {
+                    alert("데이터를 저장하지 못했습니다.");
                 }
-                /update`,
-
-            }
-        )
-            ;
-        });
+        })
+    });
 </script>
 </body>
 </html>

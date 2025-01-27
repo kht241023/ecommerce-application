@@ -20,4 +20,6 @@ public interface BookMapper {
     // 특정 정보 조회
     KHTBook findById(int id);
 
+    // 수정 void             int     -> 수정한 행 수
+    int updateById(KHTBook khtBook);
 }

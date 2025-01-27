@@ -1,10 +1,20 @@
 package com.kht.ecommerce.ecommerce_application.controller;
 
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+/*
+* url 주소값을 작성할 때
+* ? 물음표가 들어가는 파라미터는 맨 마지막에 작성
+*   /     /       /     ?     올바른 예
+*   /    ?       /      /     잘못된 예
+*
+* parameter 중간에 위치한 값을 찾지 못하는 경우 많음
+*
+* !!!!!!!   ?  가 들어가는 주소값은 ?  를 맨 마지막에 작성 !!!!!!!
+*/
+
 
 @Controller
 public class ViewBookController {
@@ -46,7 +56,7 @@ public class ViewBookController {
         return "book-detail";
     }
 
-
+    // /books/update?id= 설정    BEST !
     @GetMapping("/books/update")
     public String updateBook(@RequestParam("id") int id /*, Model model*/) {
        // model.addAttribute("bookId", id);

@@ -28,7 +28,7 @@
                         <p><strong>저자 : </strong> ${중괄호.author} </p>
                         <p><strong>장르 : </strong> ${중괄호.genre} </p>
                         <!--  URLSearchParams 에서 가져온 id값으로 해당 하는 데이터 수정 경로 설정  -->
-                        <a class="btn" id="edit-btn" href="/books?id=${bookId}/update"  >수정하기</a>
+                        <a class="btn" id="edit-btn" href="/books/update?id=${bookId}"  >수정하기</a>
                     `);
         }
     });
