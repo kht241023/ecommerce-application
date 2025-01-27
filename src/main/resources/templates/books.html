@@ -15,7 +15,7 @@
         <tr>
             <!-- <th>DB 에서 데이터 가져온 순번</th> -->
             <th>ID</th>
-            <th>제목</th>
+            <th>제목</th> <!-- 책 제목 클릭하면 책 상세보기 이동  -->
             <th>저자</th>
             <th>장르</th>
             <th>이미지</th>
@@ -67,10 +67,10 @@
                            <tr>
                         <!--    <td> ${순서} </td> -->
                                 <td> ${번째책.id}</td>
+                                <td>   <a href="   /books?id=${번째책.id}" >   ${번째책.title}</a></td>
                                 <td>${번째책.author}</td>
-                                <td>${번째책.title}</td>
                                 <td>${번째책.genre}</td>
-                                <td><img src="${번째책.imagePath ? 번째책.imagePath : '/images/defaultImg.png'}"></td>
+                                <td><img class="book-image" src="${번째책.imagePath ? 번째책.imagePath : '/images/defaultImg.png'}"></td>
                                 <!-- 이미지가 존재하지 않을 경우 대체 이미지로 설정 대체 이미지 defaultImg.png 대체
                                     삼항 연산자 사용
                                  -->

@@ -5,6 +5,7 @@ import com.kht.ecommerce.ecommerce_application.dto.KHTBook;
 import com.kht.ecommerce.ecommerce_application.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,10 @@ public class ApiBookController {
 
 
 // /books/{id}로 GET 요청을 받아 특정 책의 상세 정보를 반환
+
+    @GetMapping("/books/{id}")
+    public KHTBook findById(@PathVariable int id) {
+        return bookService.findById(id);
+    }
 // /books/{id}/update  POST 요청을 받아 특정 책 정보를 수정
 }

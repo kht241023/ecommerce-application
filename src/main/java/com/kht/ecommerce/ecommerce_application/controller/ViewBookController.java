@@ -2,7 +2,9 @@ package com.kht.ecommerce.ecommerce_application.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ViewBookController {
@@ -15,8 +17,39 @@ public class ViewBookController {
     Api  - JSON 데이터 주소
     html 파일명과  api 주소와 다르게 작성
     * */
-    @GetMapping("/books")
+    @GetMapping( "/books")
+    //@GetMapping(value = "/books" , params = {})
     public String bookList() {
         return "books";
+    }
+
+    // html 특정 파일 @RequestParam
+   // @GetMapping("/books/detail")
+   // @GetMapping("/books/detail")  // 1. /books/detail?id=아이디값
+
+
+
+
+    /*
+    Mapping = 특정 주소 값으로 기능이나 전달하고자 하는 행위를 감싸서 한 번에 전달
+    GET     = DB에서 가져온 값을 전달할 것인가
+    POST    = 저장할 것인가
+    PUT     = 수정할 것인가
+    DELETE  = 삭제할 것인가
+
+    특정 행위를 주고받고전달하는 위치 = api = url 주소값
+
+    @    Mapping ( value = "url 명칭 / api 명칭" , 주소값 뒤나 중간에 사용할 파라미터가 존재하는가 ?  기본값 = 존재 X)
+    */
+    @GetMapping(value = "/books", params = "id")  // 2. params = "id" 추가
+    public String bookDetails(@RequestParam("id") int id) {
+        return "book-detail";
+    }
+
+
+    @GetMapping("/books/update")
+    public String updateBook(@RequestParam("id") int id /*, Model model*/) {
+       // model.addAttribute("bookId", id);
+        return "book-edit";
     }
 }

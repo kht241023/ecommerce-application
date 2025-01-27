@@ -6,4 +6,10 @@
     <select id="findAll">
         SELECT * FROM KHTBOOK
     </select>
+
+    <select id="findById">
+        SELECT *
+        FROM KHTBOOK
+        WHERE id=#{id}
+    </select>
 </mapper>

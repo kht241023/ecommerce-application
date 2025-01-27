@@ -17,4 +17,7 @@ public interface BookMapper {
     //@Select("select * from khtbook")
     List<KHTBook> findAll(); // select * from khtbook sql 문이 들어있는 상태
 
+    // 특정 정보 조회
+    KHTBook findById(int id);
+
 }

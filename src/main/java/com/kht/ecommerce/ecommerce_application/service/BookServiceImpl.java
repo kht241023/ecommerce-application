@@ -21,4 +21,9 @@ public class BookServiceImpl implements BookService {
     public List<KHTBook> findAll() {
         return bookMapper.findAll();
     }
+
+    @Override
+    public KHTBook findById(int id) {
+        return bookMapper.findById(id);
+    }
 }
