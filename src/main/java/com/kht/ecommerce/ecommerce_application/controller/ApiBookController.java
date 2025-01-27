@@ -32,10 +32,10 @@ public class ApiBookController {
 // /books/{id}/update  POST 요청을 받아 특정 책 정보를 수정
     @PutMapping("/books/{id}/update")
     public int update(@PathVariable int id,
-                      @RequestParam("title") String title,
-                      @RequestParam("author") String author,
-                      @RequestParam("genre") String genre,
-                      @RequestParam("imagePath") MultipartFile imagePath) {
+                      @RequestPart("title") String title,
+                      @RequestPart("author") String author,
+                      @RequestPart("genre") String genre,
+                      @RequestPart("imagePath") MultipartFile imagePath) {
         System.out.println("======================= Controller 출력 =======================");
         System.out.println("title : " + title);
         System.out.println("author : " + author);

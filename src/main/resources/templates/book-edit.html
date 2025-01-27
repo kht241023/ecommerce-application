@@ -22,11 +22,17 @@
 
         <label for="imagePath">이미지 경로:</label>
         <input id="imagePath" name="imagePath" required type="file">
+        <div class="image-preview" id="imagePreview">
+            <span>미리보기 이미지가 여기에 표시됩니다.</span>
+        </div>
 
         <button class="btn" type="submit">수정 완료</button>
     </form>
 </div>
 <script>
+
+
+
     // 책 상세보기 api 이용해서 데이터 가져오기
     const params = new URLSearchParams(window.location.search);
     const bookId = params.get("id");
@@ -44,16 +50,19 @@
     });
 
 
-    let formData = new FormData();
-    formData.append("title", $("#title").val());
-    formData.append("author", $("#author").val());
-    formData.append("genre", $("#genre").val());
-    formData.append("imagePath", $("#imagePath")[0].files[0]);  //컨트롤러에 전달
-    // formData = title, author genre imagePath 에 관련된 내용을 담고 있는 상태
-
     // put 책 정보 수정
     $("#edit-form").submit(function (e) {
         e.preventDefault();
+
+
+        let formData = new FormData();
+        formData.append("title", $("#title").val());
+        formData.append("author", $("#author").val());
+        formData.append("genre", $("#genre").val());
+        formData.append("imagePath", $("#imagePath")[0].files[0]);  //컨트롤러에 전달
+        // formData = title, author genre imagePath 에 관련된 내용을 담고 있는 상태
+
+
         $.ajax({
             url: `/api/books/${bookId}/update`,  //  bookId = ? 가 아니므로, 주소값에서 / 사이에 작성할 수 있음
             method: "PUT", // post로 데이터가 수정이 되긴 하지만 restFul 개념에 어긋나기 때문에 put 수정
@@ -84,6 +93,29 @@
                 }
         })
     });
+
+    // javascript -> jquery 수정
+    document.getElementById("imagePath").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById("imagePreview");
+        preview.innerHTML = "";
+
+        if (file && file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.alt = "미리보기 이미지";
+                img.style.maxWidth = "100%";
+                img.style.maxHeight = "300px";
+                preview.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.innerHTML = "<span>지원하지 않는 파일 형식입니다.</span>";
+        }
+    });
+
 </script>
 </body>
 </html>
