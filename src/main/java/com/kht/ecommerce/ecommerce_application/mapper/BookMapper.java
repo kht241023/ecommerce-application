@@ -4,6 +4,7 @@ package com.kht.ecommerce.ecommerce_application.mapper;
 import com.kht.ecommerce.ecommerce_application.dto.KHTBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 //mapper.xml 에 작성된 sql 문을
@@ -21,5 +22,5 @@ public interface BookMapper {
     KHTBook findById(int id);
 
     // 수정 void             int     -> 수정한 행 수
-    int updateById(KHTBook khtBook);
+    int updateById(int id, String title, String author, String genre, String imagePath);
 }

@@ -5,6 +5,7 @@ import com.kht.ecommerce.ecommerce_application.dto.KHTBook;
 import com.kht.ecommerce.ecommerce_application.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -29,10 +30,26 @@ public class ApiBookController {
         return bookService.findById(id);
     }
 // /books/{id}/update  POST 요청을 받아 특정 책 정보를 수정
-
     @PutMapping("/books/{id}/update")
+    public int update(@PathVariable int id,
+                      @RequestParam("title") String title,
+                      @RequestParam("author") String author,
+                      @RequestParam("genre") String genre,
+                      @RequestParam("imagePath") MultipartFile imagePath) {
+        System.out.println("======================= Controller 출력 =======================");
+        System.out.println("title : " + title);
+        System.out.println("author : " + author);
+        System.out.println("genre : " + genre);
+        System.out.println("imagePath : " + imagePath);
+        System.out.println("===============================================================");
+        return  bookService.updateById(id,title, author, genre, imagePath);
+        //return 책 정보 수정 서비스 연결;
+    }
+    /*
     public int update(@PathVariable int id, @RequestBody KHTBook book) {
         return  bookService.updateById(book);
         //return 책 정보 수정 서비스 연결;
     }
+
+     */
 }

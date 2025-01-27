@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>책 수정하기</title>
-    <link href="book-styles.css" rel="stylesheet">
+    <link href="/book-styles.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
@@ -21,7 +21,7 @@
         <input id="genre" name="genre" required type="text">
 
         <label for="imagePath">이미지 경로:</label>
-        <input id="imagePath" name="imagePath" required type="text">
+        <input id="imagePath" name="imagePath" required type="file">
 
         <button class="btn" type="submit">수정 완료</button>
     </form>
@@ -43,12 +43,26 @@
         }
     });
 
+
+    let formData = new FormData();
+    formData.append("title", $("#title").val());
+    formData.append("author", $("#author").val());
+    formData.append("genre", $("#genre").val());
+    formData.append("imagePath", $("#imagePath")[0].files[0]);  //컨트롤러에 전달
+    // formData = title, author genre imagePath 에 관련된 내용을 담고 있는 상태
+
     // put 책 정보 수정
     $("#edit-form").submit(function (e) {
         e.preventDefault();
         $.ajax({
             url: `/api/books/${bookId}/update`,  //  bookId = ? 가 아니므로, 주소값에서 / 사이에 작성할 수 있음
             method: "PUT", // post로 데이터가 수정이 되긴 하지만 restFul 개념에 어긋나기 때문에 put 수정
+
+            processData: false,
+            contentType: false,
+            data :formData,
+
+            /*
             contentType: "application/json",
             data: JSON.stringify({
                 title: $("#title").val(),// input 에 수정 작성된 값 가져오기
@@ -56,13 +70,16 @@
                 genre: $("#genre").val(),
                 imagePath: $("#imagePath").val(),
             }),
+
+             */
             success:
                 function () {
                     alert("정보가 수정되었습니다.");
                     // 책목록으로 이동  상세보기로 이동 설정
                 },
             error:
-                function () {
+                function (error) {
+                    console.log("data : ",error);
                     alert("데이터를 저장하지 못했습니다.");
                 }
         })

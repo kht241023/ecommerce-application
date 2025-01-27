@@ -1,5 +1,6 @@
 package com.kht.ecommerce.ecommerce_application.controller;
 
+
 import com.kht.ecommerce.ecommerce_application.dto.Cart;
 import com.kht.ecommerce.ecommerce_application.dto.Product;
 import com.kht.ecommerce.ecommerce_application.dto.User;
@@ -8,12 +9,9 @@ import com.kht.ecommerce.ecommerce_application.service.ProductServiceImpl;
 import com.kht.ecommerce.ecommerce_application.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RestController

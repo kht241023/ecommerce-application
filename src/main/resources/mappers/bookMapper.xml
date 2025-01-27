@@ -16,7 +16,7 @@
 
     <update id="updateById">
         UPDATE KHTBOOK
-        SET author     = #{ author},
+        SET author     = #{author},
             title      = #{title},
             genre      = #{genre},
             image_path = #{imagePath}
