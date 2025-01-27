@@ -36,10 +36,6 @@ public class ViewBookController {
     // html 특정 파일 @RequestParam
    // @GetMapping("/books/detail")
    // @GetMapping("/books/detail")  // 1. /books/detail?id=아이디값
-
-
-
-
     /*
     Mapping = 특정 주소 값으로 기능이나 전달하고자 하는 행위를 감싸서 한 번에 전달
     GET     = DB에서 가져온 값을 전달할 것인가

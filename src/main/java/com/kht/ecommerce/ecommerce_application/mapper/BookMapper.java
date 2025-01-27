@@ -23,4 +23,6 @@ public interface BookMapper {
 
     // 수정 void             int     -> 수정한 행 수
     int updateById(int id, String title, String author, String genre, String imagePath);
+
+    int deleteById(int id);
 }

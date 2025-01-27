@@ -81,6 +81,11 @@ public class BookServiceImpl implements BookService {
             return 0;
         }
     }
+
+    @Override
+    public int deleteById(int id) {
+        return bookMapper.deleteById(id);
+    }
     /*
     @Override
     public int updateById(KHTBook khtBook) {
@@ -88,4 +93,7 @@ public class BookServiceImpl implements BookService {
     }
 
      */
+
+
+
 }

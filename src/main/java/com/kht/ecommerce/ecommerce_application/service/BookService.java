@@ -22,4 +22,6 @@ public interface BookService {
 
     int updateById(int id, String title, String author, String genre, MultipartFile imagePath);
     //int updateById(KHTBook khtBook);
+
+    int deleteById(int id);
 }
