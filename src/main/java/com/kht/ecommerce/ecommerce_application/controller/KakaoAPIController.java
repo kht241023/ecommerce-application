@@ -80,15 +80,20 @@ public class KakaoAPIController {
 
         Map userInfo = userResponse.getBody();
         Map<String, Object> properties = (Map<String, Object>) userInfo.get("properties");
+        Map<String, Object> kakaoAccount = (Map<String, Object>) userInfo.get("kakao_account");
 
         // 추후 프로젝트에 맞게 카카오에서 가져올 값 설정
         String nickname = (String) properties.get("nickname"); //현재는 닉네임만 가져오도록 설정한 상태
+        String email = (String) kakaoAccount.get("email"); //현재는 이메일만 가져오도록 설정한 상태
 
         // 한글 깨짐 방지
         String encodedNickname = URLEncoder.encode(nickname, StandardCharsets.UTF_8);
+        // email 의 경우 영어 + 숫자 형식 -> 변활할 필요 XXX
+        // String encodedNickemail = URLEncoder.encode(email, StandardCharsets.UTF_8);
 
-
-        return "redirect:/signup?nickname=" + encodedNickname;
+        //  키-값 받아오기 위해 키-값 시작 = ? 기호
+        //   키-값 여러값 받아오고 전달할 경우 = & 기호로 키-값 다수 사용
+        return "redirect:/signup?nickname=" + encodedNickname + "&email=" + email;
     }
 
 }

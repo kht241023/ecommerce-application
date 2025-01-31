@@ -11,13 +11,15 @@
     <title>회원가입</title>
     <form>
         <label>닉네임 : </label>
-        <input type="text" name="kakao">
+        <input type="text" name="nickname" th:value="${nickname}">
 
         <label>이름 : </label>
         <input type="text" name="kakao">
 
         <label>이메일 : </label>
-        <input type="email" name="kakao">
+        <input type="email" name="email" th:value="${email}" disabled>
+
+        <!-- image src th:src  카카오톡 프로필이미지 가져오기-->
         <button>가입하기</button>
     </form>
 </body>

@@ -21,8 +21,11 @@ public class KakaoViewController {
     // redirect 전달받을 때 ? 키=값 전달
     // 전달할 때 요청받은 requestParam 값이 존재하지 않으면 500 에러 발생
     @GetMapping("/signup")
-    public String kakaoSignUp(@RequestParam("nickname") String nickname, Model model) {
+    public String kakaoSignUp(@RequestParam("nickname") String nickname,
+                              @RequestParam("email") String email,
+                              Model model) {
         model.addAttribute("nickname", nickname);
+        model.addAttribute("email", email);
         return "kakaoSignUp";
     }
 }
